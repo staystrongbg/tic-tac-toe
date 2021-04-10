@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+    href="./fontawesome-free-5.15.2-web/css/all.css".css">
+    <link rel="shortcut icon" href="#" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>tic-tac-toe</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <!-- <div class="overlay"></div> -->
+      <h1 class="main-heading">
+        <span class="title-tic">tic</span> <span class="title-tac">tac</span>
+        <span class="title-toe">toe</span>
+      </h1>
+    </nav>
+    <header class="header">
+      <h3 class="heading">choose weapon!</h3>
+      <div class="weapons">
+        <button class="tic"><i class="fas fa-times"></i></button>
+        <button class="tac"><i class="far fa-circle"></i></button>
+      </div>
+    </header>
+    <div class="container hide">
+      <div class="tic-tac"></div>
+      <!-- <div class="overlay show"></div> -->
+      <div class="left">
+        <div id="0" class="grid grid-cell-left"></div>
+        <div id="1" class="grid grid-cell-left"></div>
+        <div id="2" class="grid grid-cell-left last"></div>
+      </div>
+      <div class="center">
+        <div id="3" class="grid grid-cell-center"></div>
+        <div id="4" class="grid grid-cell-center"></div>
+        <div id="5" class="grid grid-cell-center last"></div>
+      </div>
+      <div class="right">
+        <div id="6" class="grid grid-cell-right"></div>
+        <div id="7" class="grid grid-cell-right"></div>
+        <div id="8" class="grid grid-cell-right last"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <!-- <script src="./app.js"></script> -->
+  </body>
+</html>
