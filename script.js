@@ -17,30 +17,29 @@ const tac = document.querySelector('.tac');
 const header = document.querySelector('.header');
 const navbar = document.querySelector('.navbar');
 const grid = document.querySelectorAll('.grid');
-let gameboard = [one, two, three, four, five, six, seven, eight, nine];
+const winner = document.querySelector('.winner');
+const overlay = document.querySelector('.overlay');
 
+let gameboard = [one, two, three, four, five, six, seven, eight, nine];
 let player = '';
 let ai = '';
-// const gameboard = ['', '', '', '', '', '', '', '', ''];
 
 //iife
 (function chooseWeapon() {
   tic.addEventListener(
     'click',
     (weaponTic = () => {
-      console.log('tic');
       showHide();
-      player = /*html*/ `<i class='fas fa-times'></i>`;
-      ai = /*html */ `<i class='far fa-circle'></i>`;
+      player = 'x';
+      ai = 'o';
     })
   );
   tac.addEventListener(
     'click',
     (weaponTac = () => {
-      console.log('tac');
       showHide();
-      player = /*html */ `<i class='far fa-circle'></i>`;
-      ai = /*html */ `<i class='fas fa-times'></i>`;
+      player = 'o';
+      ai = 'x';
     })
   );
 })();
@@ -57,26 +56,65 @@ gameboard.forEach((cell) => {
 function stepHere(e) {
   let gridCell = e.currentTarget;
   gridCell.childElementCount === 0
-    ? (gridCell.innerHTML = /*html*/ `<span class='sign'>${player}</span>`)
+    ? (gridCell.innerHTML = /*html*/ `<span style='color:black' class='sign'>${player}</span>`)
     : null;
-  console.log(gridCell);
+  // console.log(gridCell);
   aiPlay();
+  checkForWinner();
 }
 
-function restart() {
-  console.log('restart');
+(function restart() {
+  overlay.addEventListener('click', restartGame);
+  function restartGame() {
+    window.location.reload();
+  }
+})();
+
+function checkForWinner() {
+  const winConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (i = 0; i <= 7; i++) {
+    const winCondition = winConditions[i];
+    let a = gameboard[winCondition[0]].textContent;
+    let b = gameboard[winCondition[1]].textContent;
+    let c = gameboard[winCondition[2]].textContent;
+    if (a === '' || b === '' || c === '') {
+      continue;
+    }
+    if (a === b && b === c) {
+      if (a === player) {
+        overlay.style.visibility = 'visible';
+        container.style.filter = 'blur(5px)';
+        overlay.innerHTML = `${player} is winner`;
+        break;
+      } else if (a === ai) {
+        overlay.style.visibility = 'visible';
+        container.style.filter = 'blur(5px)';
+        overlay.innerHTML = `${ai} is winner`;
+        break;
+      }
+    }
+  }
 }
 
 function aiPlay() {
-  gameboard = gameboard.filter((cell) => cell.childElementCount === 0);
-  let randomNum = Math.floor(Math.random() * gameboard.length);
-  // console.log(gameboard.length);
-  if (gameboard.length === 0) {
+  emptyCells = gameboard.filter((cell) => cell.childElementCount === 0);
+  let randomNum = Math.floor(Math.random() * emptyCells.length);
+  if (emptyCells.length === 0) {
+    overlay.style.visibility = 'visible';
+    container.style.filter = 'blur(5px)';
+    overlay.innerHTML = 'click to restart';
     return;
   }
-  // console.log(gameboard[randomNum]);
-  gameboard[randomNum].innerHTML = /*html*/ `<span class='sign'>${ai}</span>`;
+  emptyCells[
+    randomNum
+  ].innerHTML = /*html*/ `<span style='color:white' class='sign'>${ai}</span>`;
 }
-
-//!!!bug player moze da brise unos kompa ako klikne na polje sa O!!! - popravljen
-// bug2: eventlistener na gridcell u global player nastavlja da slusa i kad nema praznih polja
