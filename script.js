@@ -17,7 +17,6 @@ const tac = document.querySelector('.tac');
 const header = document.querySelector('.header');
 const navbar = document.querySelector('.navbar');
 const grid = document.querySelectorAll('.grid');
-const winner = document.querySelector('.winner');
 const overlay = document.querySelector('.overlay');
 
 let gameboard = [one, two, three, four, five, six, seven, eight, nine];
@@ -42,6 +41,10 @@ let ai = '';
       ai = 'x';
     })
   );
+  gameboard.forEach((cell) => {
+    cell.addEventListener('click', stepHere);
+  });
+  overlay.addEventListener('click', restartGame);
 })();
 
 function showHide() {
@@ -50,9 +53,6 @@ function showHide() {
   document.body.style.placeItems = 'center';
 }
 
-gameboard.forEach((cell) => {
-  cell.addEventListener('click', stepHere);
-});
 function stepHere(e) {
   let gridCell = e.currentTarget;
   gridCell.childElementCount === 0
@@ -63,12 +63,9 @@ function stepHere(e) {
   checkForWinner();
 }
 
-(function restart() {
-  overlay.addEventListener('click', restartGame);
-  function restartGame() {
-    window.location.reload();
-  }
-})();
+function restartGame() {
+  window.location.reload();
+}
 
 function checkForWinner() {
   const winConditions = [

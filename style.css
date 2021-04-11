@@ -84,9 +84,9 @@ body {
 .weapons {
   width: 30vw;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
-  /* display: none; */
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 }
 .weapons > button {
@@ -96,7 +96,6 @@ body {
   font-family: 'Mermaid';
   font-size: 10rem;
 }
-.restart,
 .tic,
 .tac {
   background-color: transparent;
@@ -107,15 +106,8 @@ body {
 .tac {
   color: white;
 }
-.restart {
-  margin-top: 2rem;
-  font-size: 1rem;
-}
-.winner {
-  font-size: 6em;
-}
+
 .main-heading {
-  /* font-family: Pacifico; */
   font-size: 3rem;
   letter-spacing: 3px;
   color: #fff;
@@ -127,8 +119,8 @@ body {
   flex-direction: column;
   line-height: 0.9;
   margin-left: -9px;
-  /* margin-top: 3rem; */
 }
+
 .title-tic {
   margin-left: 1rem;
   /* outline: white solid 10px; */
@@ -139,9 +131,6 @@ body {
 .question-mark {
   color: brown;
   text-align: center;
-  margin-bottom: 1rem;
-  /* margin-bottom: -70px; */
-
   font-weight: 100;
   font-size: 8rem;
   text-transform: capitalize;
