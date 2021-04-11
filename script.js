@@ -58,7 +58,6 @@ function stepHere(e) {
   gridCell.childElementCount === 0
     ? (gridCell.innerHTML = /*html*/ `<span style='color:black' class='sign'>${player}</span>`)
     : null;
-  // console.log(gridCell);
   aiPlay();
   checkForWinner();
 }
@@ -90,12 +89,12 @@ function checkForWinner() {
       if (a === player) {
         overlay.style.visibility = 'visible';
         container.style.filter = 'blur(5px)';
-        overlay.innerHTML = `${player} is winner`;
+        overlay.textContent = `${player} is winner`;
         break;
       } else if (a === ai) {
         overlay.style.visibility = 'visible';
         container.style.filter = 'blur(5px)';
-        overlay.innerHTML = `${ai} is winner`;
+        overlay.textContent = `${ai} is winner`;
         break;
       }
     }
