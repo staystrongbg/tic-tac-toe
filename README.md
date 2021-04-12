@@ -1,3 +1,5 @@
+live previewx-o-bato.surge.sh
+
 # tic-tac-toe game
 
 - math random upis za AI?
