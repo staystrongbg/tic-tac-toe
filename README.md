@@ -1,6 +1,6 @@
 live preview
 
-x-o-bato.surge.sh
+http://x-o-bato.surge.sh/
 
 # tic-tac-toe game
 
