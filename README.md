@@ -1,4 +1,6 @@
-live previewx-o-bato.surge.sh
+live preview
+
+x-o-bato.surge.sh
 
 # tic-tac-toe game
 
